@@ -46,7 +46,7 @@ Every message is **JSON** and has a `type` field that tells you what it’s for.
 | Type      | Description                | Example                                                              |
 | --------- | -------------------------- | -------------------------------------------------------------------- |
 | `output`  | Terminal output.           | `{"type": "output", "value": "Output of command"}`                   |
-| `message` | Chat message from someone. | `{"type": "message", "name": "William", "message": "Orph is nice!"}` |
+| `message` | Chat message from someone. | `{"type": "message", "name": "William Daniel", "message": "Orph is nice!"}` |
 
 ---
 

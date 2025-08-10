@@ -52,12 +52,16 @@ body, html {
 
 #chat p.message {
     background-color: #6c7086;
-    border-radius: 1rem;
+    border-radius: 0.25rem;
+    padding: 0.25rem;
     margin: 1rem;
+    margin-top:0.25rem;
 }
 
 #chat p.name {
     color: #bac2de;
+    margin: 0.25rem;
+    padding: 0;
 }
 
 #name {
@@ -70,7 +74,7 @@ body, html {
 
 h1 {
     font-size: 5rem;
-    margin: 1px
+    margin: 0.1rem;
 }
 
 h2 {
