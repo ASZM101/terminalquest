@@ -64,21 +64,26 @@ function sanitize(string) {
   };
   const reg = /[&<>"'/]/ig;
   return string.replace(reg, (match)=>(map[match]));
-}// Quests
+}
 
-fetch('quests.json')
-.then(response => {
-  if (!response.ok) {
-    throw new Error(`HTTP error! Status: ${response.status}`);
-  }
-  return response.json();
-})
-.then(quests => {
-    const index = Math.floor(Math.random() * quests.length);
-    const quest = quests[index];
-    document.getElementById('quest-title').innerHTML = `${quest.title}`;
-    document.getElementById('quest-description').innerHTML = `${quest.description}`;
-})
-.catch(error => {
-  console.error('Error fetching quests:', error);
-});
+// Quests
+
+function nextQuest() {
+    fetch('quests.json')
+    .then(response => {
+    if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    return response.json();
+    })
+    .then(quests => {
+        const index = Math.floor(Math.random() * quests.length);
+        const quest = quests[index];
+        document.getElementById('quest-title').innerHTML = `${quest.title}`;
+        document.getElementById('quest-description').innerHTML = `${quest.description}`;
+    })
+    .catch(error => {
+    console.error('Error fetching quests:', error);
+    });
+}
+nextQuest();
