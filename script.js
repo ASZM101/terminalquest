@@ -1,9 +1,9 @@
 const socket = new WebSocket("ws://10.226.128.177:8000/ws");
-const terminal = document.getElementById("terminal")
-const chat = document.getElementById("chat-message")
-const terminalInput = document.getElementById("terminal-input")
-const chatInput = document.getElementById("chat-input")
-const nameInput = document.getElementById("name")
+const terminalText = document.getElementById("terminal-text");
+const chat = document.getElementById("chat-message");
+const terminalInput = document.getElementById("terminal-input");
+const chatInput = document.getElementById("chat-input");
+const nameInput = document.getElementById("name");
 
 socket.onopen = () => {
   console.log("Connected to backend!");
@@ -11,77 +11,103 @@ socket.onopen = () => {
 
 socket.onmessage = (event) => {
   const data = JSON.parse(event.data);
-  parseRequest(data)
+  parseRequest(data);
 };
 
+// Append safely without rewriting the input DOM
+function appendTerminalLine(text) {
+  const line = document.createElement("div");
+  line.className = "terminal-line";
+  line.textContent = text ?? "";
+  terminalText.appendChild(line);
+  terminalText.scrollTop = terminalText.scrollHeight;
+}
+
+function appendChatMessage(name, message) {
+  const nameEl = document.createElement("p");
+  nameEl.className = "name";
+  nameEl.textContent = name ?? "Anonymous";
+
+  const msgEl = document.createElement("p");
+  msgEl.className = "message";
+  msgEl.textContent = message ?? "";
+
+  chat.append(nameEl, msgEl);
+}
+
 function parseRequest(data) {
-    switch (data.type) {
-        case "output":
-            terminal.innerHTML += "<br />" + data.value
-            break;
-        case "message":
-            chat.innerHTML += `<p class = 'name'>${data.name}</p><p class = 'message'>${data.message}</p>`
-            break;
-        default:
-            break;
-    }
-} 
+  switch (data.type) {
+    case "output":
+      appendTerminalLine(data.value);
+      break;
+    case "message":
+      appendChatMessage(data.name, data.message);
+      break;
+    default:
+      break;
+  }
+}
 
 function sendTerminalCommand() {
-    try {
-        let input = sanitize(terminalInput.value)
-        let data = `{"type": "input", "value": "${input}"}`
-        socket.send(data)
-        terminalInput.value = ""
-    } catch {
-        console.log("(〒▽〒) it doesn't work")
-    }
+  try {
+    console.log("Input value:", terminalInput.value); // Debug
+    const input = sanitize(terminalInput.value);
+    console.log("Sanitized input:", input); // Debug
+    const payload = { type: "input", value: input };
+    socket.send(JSON.stringify(payload));
+    terminalInput.value = "";
+  } catch (err) {
+    console.error("Error:", err); // Better error logging
+    console.log("(〒▽〒) it doesn't work");
+  }
 }
 
 function sendChatMessage() {
-    try {
-        let name = nameInput.value
-        let message = sanitize(chatInput.value)
-        chatInput.value = ""
-        let data = `{"type": "input", "message": "${message}", "name": "${name}"}`
-        socket.send(data)
-    } catch {}
+  try {
+    const name = nameInput.value;
+    const message = sanitize(chatInput.value);
+    chatInput.value = "";
+    const payload = { type: "input", message, name }; // keep type if backend expects it
+    socket.send(JSON.stringify(payload));
+  } catch {}
 }
-
-
 
 //https://stackoverflow.com/a/48226843
 function sanitize(string) {
   const map = {
-      '&': '&amp;',
-      '<': '&lt;',
-      '>': '&gt;',
-      '"': '&quot;',
-      "'": '&#x27;',
-      "/": '&#x2F;',
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#x27;",
+    "/": "&#x2F;",
   };
-  const reg = /[&<>"'/]/ig;
-  return string.replace(reg, (match)=>(map[match]));
+  const reg = /[&<>"'/]/gi;
+  return String(string).replace(reg, (match) => map[match]);
 }
 
 // Quests
-
 function nextQuest() {
-    fetch('quests.json')
-    .then(response => {
-    if (!response.ok) {
+  fetch("quests.json")
+    .then((response) => {
+      if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
-    }
-    return response.json();
+      }
+      return response.json();
     })
-    .then(quests => {
-        const index = Math.floor(Math.random() * quests.length);
-        const quest = quests[index];
-        document.getElementById('quest-title').innerHTML = `${quest.title}`;
-        document.getElementById('quest-description').innerHTML = `${quest.description}`;
+    .then((quests) => {
+      const index = Math.floor(Math.random() * quests.length);
+      const quest = quests[index];
+      document.getElementById("quest-title").textContent = `${quest.title}`;
+      document.getElementById("quest-description").textContent = `${quest.description}`;
     })
-    .catch(error => {
-    console.error('Error fetching quests:', error);
+    .catch((error) => {
+      console.error("Error fetching quests:", error);
     });
 }
 nextQuest();
+
+// Optional: submit on Enter
+terminalInput.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") sendTerminalCommand();
+});
