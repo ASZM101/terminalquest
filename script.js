@@ -1,9 +1,9 @@
 const socket = new WebSocket("ws://10.226.128.177:8000/ws");
-const terminal = document.getElementById("terminal")
-const chat = document.getElementById("chat-message")
-const terminalInput = document.getElementById("terminal-input")
-const chatInput = document.getElementById("chat-input")
-const nameInput = document.getElementById("name")
+let terminal = document.getElementById("terminal")
+let chat = document.getElementById("chat-message")
+let terminalInput = document.getElementById("terminal-input")
+let chatInput = document.getElementById("chat-input")
+let nameInput = document.getElementById("name")
 
 socket.onopen = () => {
   console.log("Connected to backend!");
@@ -30,7 +30,7 @@ function parseRequest(data) {
 // :)
 function sendTerminalCommand() {
     try {
-        let input = sanitize(terminalInput.value)
+        let input = document.getElementById("terminal-input").value
         let data = `{"type": "input", "value": "${input}"}`
         socket.send(data)
         terminalInput.value = ""
@@ -68,7 +68,7 @@ function sanitize(string) {
 // Quests
 
 function nextQuest() {
-    fetch('quests.json')
+    fetch('./quests.json')
     .then(response => {
     if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
