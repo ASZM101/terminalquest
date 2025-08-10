@@ -1,4 +1,5 @@
 const socket = new WebSocket("ws://localhost:5000/ws");
+const terminal = document.getElementById("terminal")
 
 socket.onopen = () => {
   console.log("Connected to backend!");
@@ -12,6 +13,7 @@ socket.onmessage = (event) => {
 function parseRequest(data) {
     switch (data.type) {
         case "output":
+            terminal.innerHTML += data.value
             break;
         case "message":
             break;
