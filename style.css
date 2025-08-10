@@ -16,6 +16,10 @@
     min-height: 80vh;
 }
 
+#stuff div {
+    padding: 10px;
+}
+
 #terminal {
     flex: 4;
 }
