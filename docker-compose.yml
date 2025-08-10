@@ -12,3 +12,11 @@ services:
       dockerfile: Dockerfile
     depends_on:
       - backend
+
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    
