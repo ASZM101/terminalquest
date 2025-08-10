@@ -20,6 +20,18 @@
     flex: 4;
 }
 
-#quests {
+#sidebar {
     flex: 1;
+    display:flex;
+    flex-flow: column;
+}
+
+#chat p.message {
+    background-color: #6c7086;
+    border-radius: 1rem;
+    margin: 1rem;
+}
+
+#chat p.name {
+    color: #bac2de;
 }
