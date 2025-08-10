@@ -1,7 +1,7 @@
 const socket = new WebSocket("ws://localhost:8000/ws");
 const terminal = document.getElementById("terminal")
 const chat = document.getElementById("chat")
-const terminalInput = document.getElementById
+const terminalInput = document.getElementById("terminal-input")
 
 socket.onopen = () => {
   console.log("Connected to backend!");
