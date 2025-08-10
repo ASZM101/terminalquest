@@ -3,6 +3,7 @@
     color: #cdd6f4;
     font-family: monospace;
     font-size: 16px;
+    /*text-transform: lowercase;*/
 }
 
 body, html {
@@ -12,6 +13,11 @@ body, html {
     width: 100%;
     overscroll-behavior: none;
 }
+
+code {
+    color: #f9e2af;
+}
+
 
 #stuff {
     display:flex;
@@ -59,6 +65,8 @@ body, html {
 }
 
 #chat p.name {
+    font-weight: bold;
+    font-style: italic;
     color: #bac2de;
     margin: 0.25rem;
     padding: 0;
@@ -73,9 +81,28 @@ body, html {
     background-color: #313244;
 }
 
+#inputs-for-terminal-are-here- {
+    display: flex;
+    flex-flow: row;
+}
+
 #terminal-input {
-    width: calc(100% - 84.16px);
-    max-width: 100%;
+    flex: 7;
+}
+
+#terminal-submit {
+    flex: 1;
+}
+
+#quest-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#quest-header button {
+    height: fit-content;
 }
 
 h1 {

@@ -1,0 +1,37 @@
+[
+    {
+        "title": "Analyze Your Surroundings",
+        "description": "Use the <code>ls</code> command to analyze your surroundings by listing all of the contents of the current directory."
+    },
+    {
+        "title": "Explore the Environment",
+        "description": "Use the <code>cd DIRECTORY_NAME</code> command to explore the environment by changing the current directory. Make sure to replace <code>DIRECTORY_NAME</code> with the actual name of the directory you want to explore."
+    },
+    {
+        "title": "Determine Your Location",
+        "description": "Use the <code>pwd</code> command to determine your location by printing the current directory's path."
+    },
+    {
+        "title": "Retrace Your Steps",
+        "description": "Use the <code>history</code> command to view the history of the commands you have previously used."
+    },
+    {
+        "title": "Construct a Building",
+        "description": "Use the <code>mkdir DIRECTORY_NAME</code> command to create a new directory. Make sure to replace <code>DIRECTORY_NAME</code> with the actual name of the directory you want to construct."
+    },
+    {
+        "title": "Demolish a Building or Room",
+        "description": "Use the <code>rm NAME</code> command to delete files or directories. Make sure to replace <code>NAME</code> with the actual name of the file or directory you want to demolish."
+    },
+    {
+        "title": "Enter a Room",
+        "description": "Use the <code>cat FILE_NAME</code> command to display the contents of a file. Make sure to replace <code>FILE_NAME</code> with the actual name of the file you want to enter."
+    },
+    {
+        "title": "Construct a Room",
+        "description": "Use the <code>touch FILE_NAME</code> command to create a new file. Make sure to replace <code>FILE_NAME</code> with the actual name of the file you want to construct."
+    },
+    {
+        "title": "Take a Train"
+    }
+]

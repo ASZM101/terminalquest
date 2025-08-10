@@ -1,7 +1,9 @@
 const socket = new WebSocket("ws://10.226.128.177:8000/ws");
 const terminal = document.getElementById("terminal")
-const chat = document.getElementById("chat")
+const chat = document.getElementById("chat-message")
 const terminalInput = document.getElementById("terminal-input")
+const chatInput = document.getElementById("chat-input")
+const nameInput = document.getElementById("name")
 
 socket.onopen = () => {
   console.log("Connected to backend!");
@@ -27,7 +29,7 @@ function parseRequest(data) {
 
 function sendTerminalCommand() {
     try {
-        let input = input_function(terminalInput.value)
+        let input = sanitize(terminalInput.value)
         let data = `{"type": "input", "value": "${input}"}`
         socket.send(data)
         terminalInput.value = ""
@@ -37,10 +39,49 @@ function sendTerminalCommand() {
 }
 
 function sendChatMessage() {
-
+    try {
+        let name = nameInput.value
+        let message = sanitize(chatInput.value)
+        chatInput.value = ""
+        let data = `{"type": "input", "message": "${message}", "name": "${name}"}`
+        socket.send(data)
+    } catch {}
 }
 
-function input_function(input) {
-    return input.replaceAll("<img", "<!--<img-->")
+
+
+//https://stackoverflow.com/a/48226843
+function sanitize(string) {
+  const map = {
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      '"': '&quot;',
+      "'": '&#x27;',
+      "/": '&#x2F;',
+  };
+  const reg = /[&<>"'/]/ig;
+  return string.replace(reg, (match)=>(map[match]));
 }
 
+// Quests
+
+function nextQuest() {
+    fetch('quests.json')
+    .then(response => {
+    if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    return response.json();
+    })
+    .then(quests => {
+        const index = Math.floor(Math.random() * quests.length);
+        const quest = quests[index];
+        document.getElementById('quest-title').innerHTML = `${quest.title}`;
+        document.getElementById('quest-description').innerHTML = `${quest.description}`;
+    })
+    .catch(error => {
+    console.error('Error fetching quests:', error);
+    });
+}
+nextQuest();
