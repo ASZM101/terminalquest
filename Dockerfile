@@ -7,6 +7,7 @@ COPY nginx.conf /etc/nginx/nginx.conf
 COPY index.html /usr/share/nginx/html/static/
 COPY script.js  /usr/share/nginx/html/static/
 COPY style.css  /usr/share/nginx/html/static/
+COPY quests.json /usr/share/nginx/html/static/
 
 EXPOSE 80
 
