@@ -2,4 +2,56 @@
     background-color: #1e1e2e;
     color: #cdd6f4;
     font-family: monospace;
+    font-size: 16px;
+}
+
+body, html {
+    margin: 0px;
+    padding: 0px;
+    min-height: 100%;
+    width: 100%;
+    overscroll-behavior: none;
+}
+
+#stuff {
+    display:flex;
+    flex-flow: row;
+}
+
+#stuff > div {
+    background-color: #313244;
+    margin: 1.5rem;
+    min-height: 80vh;
+}
+
+#stuff div {
+    padding: 10px;
+}
+
+#terminal {
+    flex: 4;
+}
+
+#sidebar {
+    flex: 1;
+    display:flex;
+    flex-flow: column;
+}
+
+#chat {
+    flex: 1;
+}
+
+#quests {
+    flex: 1;
+}
+
+#chat p.message {
+    background-color: #6c7086;
+    border-radius: 1rem;
+    margin: 1rem;
+}
+
+#chat p.name {
+    color: #bac2de;
 }
