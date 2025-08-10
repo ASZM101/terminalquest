@@ -66,10 +66,16 @@ body, html {
 
 #name {
     flex: 0.1;
+    width: calc(100% - 20px);
 }
 
 #terminal-text {
     background-color: #313244;
+}
+
+#terminal-input {
+    width: calc(100% - 84.16px);
+    max-width: 100%;
 }
 
 h1 {
