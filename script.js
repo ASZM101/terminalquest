@@ -6,5 +6,16 @@ socket.onopen = () => {
 
 socket.onmessage = (event) => {
   const data = JSON.parse(event.data);
-  console.log("Received:", data);
+  parseRequest(data)
 };
+
+function parseRequest(data) {
+    switch (data.type) {
+        case "output":
+            break;
+        case "message":
+            break;
+        default:
+            break;
+    }
+}
