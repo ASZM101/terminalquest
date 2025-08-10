@@ -43,7 +43,7 @@ function sendChatMessage() {
         let name = nameInput.value
         let message = sanitize(chatInput.value)
         chatInput.value = ""
-        let data = `{"type": "input", "value": "${input}"}`
+        let data = `{"type": "input", "message": "${message}", "name": "${name}"}`
         socket.send(data)
     } catch {}
 }
