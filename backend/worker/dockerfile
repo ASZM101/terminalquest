@@ -1,6 +1,6 @@
 FROM alpine:latest
 
-RUN apk add --no-cache socat
+RUN apk add --no-cache socat sl
 
 
 CMD socat TCP-LISTEN:9000,reuseaddr,fork EXEC:/bin/sh,pty,stderr,setsid,sigint,sane
