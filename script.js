@@ -17,7 +17,7 @@ function parseRequest(data) {
             terminal.innerHTML += "<br />" + data.value
             break;
         case "message":
-            chat.innerHTML += `<p class = 'name'>${data.name}</p><p class = 'message'>${data.message}`
+            chat.innerHTML += `<p class = 'name'>${data.name}</p><p class = 'message'>${data.message}</p>`
             break;
         default:
             break;

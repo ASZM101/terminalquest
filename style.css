@@ -10,7 +10,7 @@
     flex-flow: row;
 }
 
-#stuff * {
+#stuff > div {
     background-color: #313244;
     margin: 1.5rem;
     min-height: 80vh;
@@ -24,6 +24,14 @@
     flex: 1;
     display:flex;
     flex-flow: column;
+}
+
+#chat {
+    flex: 1;
+}
+
+#quests {
+    flex: 1;
 }
 
 #chat p.message {
