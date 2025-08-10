@@ -76,9 +76,17 @@ body, html {
     background-color: #313244;
 }
 
+#inputs-for-terminal-are-here- {
+    display: flex;
+    flex-flow: row;
+}
+
 #terminal-input {
-    width: calc(100% - 84.16px);
-    max-width: 100%;
+    flex: 7;
+}
+
+#terminal-submit {
+    flex: 1;
 }
 
 h1 {
