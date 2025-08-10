@@ -15,12 +15,9 @@ body, html {
 }
 
 code {
-    color: yellow;
+    color: #f9e2af;
 }
 
-input {
-    width: calc(100% - 20px);
-}
 
 #stuff {
     display:flex;
