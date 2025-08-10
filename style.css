@@ -40,7 +40,6 @@ body, html {
 
 #sidebar > * {
     background-color: #1e1e2e;
-    background-color: #313244;
 }
 
 #chat {
@@ -59,4 +58,12 @@ body, html {
 
 #chat p.name {
     color: #bac2de;
+}
+
+#name {
+    flex: 0.1;
+}
+
+#terminal-text {
+    background-color: #313244;
 }
