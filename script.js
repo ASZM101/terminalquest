@@ -29,10 +29,12 @@ function sendTerminalCommand() {
     let input = input_function(terminalInput.value)
     let data = `{"type": "input", "value": "${input}"}`
     socket.send(data)
+    terminalInput.value = ""
+    
 }
 
 function sendChatMessage() {
-    
+
 }
 
 function input_function(input) {
