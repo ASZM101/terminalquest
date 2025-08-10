@@ -50,14 +50,11 @@ function parseRequest(data) {
 
 function sendTerminalCommand() {
   try {
-    console.log("Input value:", terminalInput.value); // Debug
     const input = sanitize(terminalInput.value);
-    console.log("Sanitized input:", input); // Debug
     const payload = { type: "input", value: input };
     socket.send(JSON.stringify(payload));
     terminalInput.value = "";
-  } catch (err) {
-    console.error("Error:", err); // Better error logging
+  } catch () {
     console.log("(〒▽〒) it doesn't work");
   }
 }
