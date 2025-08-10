@@ -26,11 +26,14 @@ function parseRequest(data) {
 } 
 
 function sendTerminalCommand() {
-    let input = input_function(terminalInput.value)
-    let data = `{"type": "input", "value": "${input}"}`
-    socket.send(data)
-    terminalInput.value = ""
-    
+    try {
+        let input = input_function(terminalInput.value)
+        let data = `{"type": "input", "value": "${input}"}`
+        socket.send(data)
+        terminalInput.value = ""
+    } catch {
+        console.log("(〒▽〒) it doesn't work")
+    }
 }
 
 function sendChatMessage() {
