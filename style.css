@@ -38,6 +38,11 @@ body, html {
     flex-flow: column;
 }
 
+#sidebar > * {
+    background-color: #1e1e2e;
+    background-color: #313244;
+}
+
 #chat {
     flex: 1;
 }
