@@ -85,3 +85,7 @@ function nextQuest() {
     });
 }
 nextQuest();
+
+terminalInput.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") sendTerminalCommand();
+});
