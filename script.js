@@ -13,7 +13,7 @@ socket.onmessage = (event) => {
 function parseRequest(data) {
     switch (data.type) {
         case "output":
-            terminal.innerHTML += data.value
+            terminal.innerHTML += "<br />" + data.value
             break;
         case "message":
             break;
