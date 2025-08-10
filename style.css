@@ -94,6 +94,17 @@ code {
     flex: 1;
 }
 
+#quest-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#quest-header button {
+    height: fit-content;
+}
+
 h1 {
     font-size: 4rem;
     margin: 0.1rem;
