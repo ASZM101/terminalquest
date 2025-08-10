@@ -1,4 +1,4 @@
-const socket = new WebSocket("ws://localhost:8000/ws");
+const socket = new WebSocket("ws://10.226.128.177:8000/ws");
 const terminal = document.getElementById("terminal")
 const chat = document.getElementById("chat")
 const terminalInput = document.getElementById("terminal-input")
