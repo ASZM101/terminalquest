@@ -27,6 +27,7 @@ function parseRequest(data) {
     }
 } 
 
+// :)
 function sendTerminalCommand() {
     try {
         let input = sanitize(terminalInput.value)
