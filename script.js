@@ -29,7 +29,7 @@ function parseRequest(data) {
 
 function sendTerminalCommand() {
     try {
-        let input = input_function(terminalInput.value)
+        let input = sanitize(terminalInput.value)
         let data = `{"type": "input", "value": "${input}"}`
         socket.send(data)
         terminalInput.value = ""
@@ -41,15 +41,25 @@ function sendTerminalCommand() {
 function sendChatMessage() {
     try {
         let name = nameInput.value
-        let message = input_function(chatInput.value)
+        let message = sanitize(chatInput.value)
         chatInput.value = ""
         let data = `{"type": "input", "value": "${input}"}`
         socket.send(data)
     } catch {}
 }
 
-function input_function(input) {
-    return input.replaceAll("<img", "<!--<img-->").replaceAll()
-    
-}
 
+
+//https://stackoverflow.com/a/48226843
+function sanitize(string) {
+  const map = {
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      '"': '&quot;',
+      "'": '&#x27;',
+      "/": '&#x2F;',
+  };
+  const reg = /[&<>"'/]/ig;
+  return string.replace(reg, (match)=>(map[match]));
+}
