@@ -1,5 +1,5 @@
 const socket = new WebSocket("ws://10.226.128.177:8000/ws");
-let terminal = document.getElementById("terminal")
+let terminal = document.getElementById("terminal-text")
 let chat = document.getElementById("chat-message")
 let terminalInput = document.getElementById("terminal-input")
 let chatInput = document.getElementById("chat-input")
