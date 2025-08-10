@@ -11,8 +11,9 @@
     <body>
         <script src="script.js"></script>
         <div id = "stuff">
-            <div id = "terminal">test</div>
+            <div id = "terminal"><div id = "terminal-text">test</div><br /><input id = "terminal-input"><button id = "terminal-submit" onclick = "sendTerminalCommand()">send!</button></div>
             <div id = "sidebar">
+                <input id = "name">
                 <div id = "quests"><h1 id = "quest-title">Quest Title</h1><p id = "quest-description">Tap to add description</p></div>
                 <div id = "chat"><p class = 'name'>${data.name}</p><p class = 'message'>${data.message}</p></div>
             </div>

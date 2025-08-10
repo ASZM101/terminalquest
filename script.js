@@ -1,6 +1,7 @@
 const socket = new WebSocket("ws://localhost:5000/ws");
 const terminal = document.getElementById("terminal")
 const chat = document.getElementById("chat")
+const terminalInput = document.getElementById
 
 socket.onopen = () => {
   console.log("Connected to backend!");
@@ -22,4 +23,21 @@ function parseRequest(data) {
         default:
             break;
     }
+} 
+
+function sendTerminalCommand() {
+    let input = input_function(terminalInput.value)
+    let data = `{"type": "input", "value": "${input}"}`
+    socket.send(data)
+    terminalInput.value = ""
+    
 }
+
+function sendChatMessage() {
+
+}
+
+function input_function(input) {
+    return input.replaceAll("<img", "<!--<img-->")
+}
+
