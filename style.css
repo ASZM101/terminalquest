@@ -60,6 +60,8 @@ body, html {
 }
 
 #chat p.name {
+    font-weight: bold;
+    font-style: italic;
     color: #bac2de;
     margin: 0.25rem;
     padding: 0;
